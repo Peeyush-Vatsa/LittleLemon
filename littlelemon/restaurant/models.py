@@ -9,10 +9,12 @@ class Booking(models.Model):
     BookingDate = models.DateTimeField()
 
 class Menu(models.Model):
-    id = models.IntegerField(primary_key=True, auto_created=True)
     Title = models.CharField(max_length=255)
     Price = models.DecimalField(max_digits=10, decimal_places=2)
     Inventory = models.IntegerField()
 
     def get_item(self):
+        return f'{self.Title} : {str(self.Price)}'
+    
+    def __str__(self):
         return f'{self.Title} : {str(self.Price)}'
